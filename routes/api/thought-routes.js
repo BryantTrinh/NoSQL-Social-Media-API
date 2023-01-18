@@ -18,7 +18,7 @@ router.route('/').get(getThoughts).post(createThought);
 
 // mapping three different methods of get, put, delete. same logic as the previous comment.
 
-router.route('/:thoughtId').get(getSingleThrought).put(updateThought).delete(deleteThought);
+router.route('/:thoughtId').get(getSingleThought).put(updateThought).delete(deleteThought);
 
 // add reaction on post
 router.route('/:thoughtId/reactions').post(addReaction);

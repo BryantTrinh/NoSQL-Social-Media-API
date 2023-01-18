@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(routes);
 
-db.oonce('open', () => {
+db.once('open', () => {
   app.listen(PORT, () => {
     console.log(`Server has started and is running on port ${PORT}`);
   });

@@ -14,7 +14,7 @@ const {
 
 router.route('/').get(getUsers).post(createUser);
 
-// get single user, put- updating a user, delete- deleting using
+// get single user, put- updating a user, delete
 
 router.route('/:userId').get(getSingleUser).put(updateUser).delete(deleteUser);
 

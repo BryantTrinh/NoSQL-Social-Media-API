@@ -1,6 +1,6 @@
 // For mongoose, we require schema and model to structure.
 
-const { Schema, Model } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const reactionSchema = require('./Reaction');
 
@@ -11,7 +11,7 @@ const thoughtSchema = new Schema(
   {
     thoughtText: {
       type: String,
-      required: `Please leave a thought.` true,
+      required: `Please leave a thought.`,
       minlength: 1,
       maxlength: 280
     },
@@ -42,6 +42,6 @@ thoughtSchema.virtual('reactionCount').get
   return this.reactions.length;
 });
 
-const Thought = model('Thought', thoughSchema);
+const Thought = model('Thought', thoughtSchema);
 
 module.exports = Thought;
