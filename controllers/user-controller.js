@@ -89,7 +89,7 @@ const userController = {
             message: 'No user associated with this id' });
           }
           return Thought.deleteMany({_id: {
-            $in: dbUserData.thoughts } })'
+            $in: dbUserData.thoughts } })
           })
           .then(() => {
             res.json({ message: 'User has been deleted, along with all their thoughts.' });
@@ -103,7 +103,7 @@ const userController = {
 // add friend to your friends list
   addFriend(req, res) {
     User.findOneAndUpdate(
-      {_id.req.params.userId },
+      {_id: req.params.userId },
       { $addToSet: { friends: req.params.friendId } },
       { new: true })
       .then((dbUserData) => {
@@ -118,5 +118,23 @@ const userController = {
       });
   },
 
-  
+// Finally, remove friend from friends list
 
+removeFriend(req, res) {
+  User.findOneAndUpdate({_id: req.params.userId },
+    { $pull: { friends: req.params.friendId } },
+    { new: true })
+  .then((dbUserData) => {
+    if (!dbThoughtData) {
+      return res.status(404).json({ message: 'No user with this id' });
+    }
+    res.json(dbUserData);
+  })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+  },
+}
+
+module.exports = userController;
