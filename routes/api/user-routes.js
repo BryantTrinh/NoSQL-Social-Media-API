@@ -10,7 +10,7 @@ const {
   removeFriend,
 } = require('../../controllers/user-controller');
 
-// route to root and also able to create User
+// route to root directory and also able to create User
 
 router.route('/').get(getUsers).post(createUser);
 

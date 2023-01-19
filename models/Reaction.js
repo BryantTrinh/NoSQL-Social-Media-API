@@ -5,7 +5,7 @@ const { Schema, Types } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 // required for schema is reactionID, reactionBody, username, createdAt
-const reactionSchema = new Schema (
+const Reaction = new Schema (
   {
     reactionId: {
       type: Schema.Types.ObjectId,
@@ -35,4 +35,4 @@ const reactionSchema = new Schema (
   }
 );
 
-module.exports = reactionSchema;
+module.exports = Reaction;
