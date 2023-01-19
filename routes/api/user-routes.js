@@ -1,4 +1,4 @@
-const router = require('express').Router();
+const userRouter = require('express').Router();
 
 const {
   getUsers,
@@ -12,14 +12,14 @@ const {
 
 // route to root directory and also able to create User
 
-router.route('/').get(getUsers).post(createUser);
+userRouter.route('/').get(getUsers).post(createUser);
 
 // get single user, put- updating a user, delete
 
-router.route('/:userId').get(getSingleUser).put(updateUser).delete(deleteUser);
+userRouter.route('/:userId').get(getSingleUser).put(updateUser).delete(deleteUser);
 
 // post- add friend and delete- remove friends
 
-router.route('/:userId/friends/:friendId').post(addFriend).delete(removeFriend);
+userRouter.route('/:userId/friends/:friendId').post(addFriend).delete(removeFriend);
 
-module.exports = router;
+module.exports = userRouter;

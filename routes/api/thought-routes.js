@@ -1,4 +1,4 @@
-const router = require('express').Router();
+const thoughtRouter = require('express').Router();
 
 // get all thoughts, get a single thought by id, createthought, updatethought, deletethought, addreaction, removereaction
 
@@ -14,16 +14,16 @@ const {
 
 // route for root URL of our app, then we map two methods to two different functions of getThoughts and createThought. when we do a GET, getthoughts will be executed, on POST, to root url, createThought is executed.
 
-router.route('/').get(getThoughts).post(createThought);
+thoughtRouter.route('/').get(getThoughts).post(createThought);
 
 // mapping three different methods of get, put, delete. same logic as the previous comment.
 
-router.route('/:thoughtId').get(getSingleThought).put(updateThought).delete(deleteThought);
+thoughtRouter.route('/:thoughtId').get(getSingleThought).put(updateThought).delete(deleteThought);
 
 // add reaction on post
-router.route('/:thoughtId/reactions').post(addReaction);
+thoughtRouter.route('/:thoughtId/reactions').post(addReaction);
 
 // delete/ remove reaction.
-router.route('/:thoughtId/reactions/:reactionId').delete(removeReaction);
+thoughtRouter.route('/:thoughtId/reactions/:reactionId').delete(removeReaction);
 
-module.exports = router;
+module.exports = thoughtRouter;

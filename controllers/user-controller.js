@@ -15,6 +15,8 @@ const userController = {
   getUsers(req, res) {
     User.find()
     .select('-__v')
+    .populate('friends')
+    .populate('thoughts')
     .then((dbUserData) => {
       res.json(dbUserData);
     })

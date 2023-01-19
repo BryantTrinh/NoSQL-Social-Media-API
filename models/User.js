@@ -1,6 +1,8 @@
 // Same thing as other models, we require Schema and model for mongoose
 
 const { Schema, model } = require('mongoose');
+
+const { Thought } = require ('./Thought');
 // requires username, email, thoughts, friends
 // for username, add trim:true, so that it removes white spaces from value of the field.
 const userSchema = new Schema(

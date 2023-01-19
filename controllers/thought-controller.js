@@ -31,7 +31,7 @@ const thoughtController = {
   getSingleThought(req, res) {
     Thought.findOne({_id: req.params.thoughtId })
     .then((dbThoughtData) => {
-      if(!dbThoughtData) {
+      if (!dbThoughtData) {
         return res.status(404).json({ 
           message: 'No thoughts match this id.' });
         }
@@ -49,9 +49,8 @@ const thoughtController = {
     Thought.create(req.body)
     .then((dbThoughtData) => {
       return User.findOneAndUpdate(
-        {_id: req.body.userId },
-        { $push: {
-          thoughts: dbThoughtData._id } },
+        { _id: req.body.userId },
+        { $push: { thoughts: dbThoughtData._id } },
           { new: true }
       );
     })
@@ -96,8 +95,8 @@ const thoughtController = {
         }
 
 // remove thought id from user's thoughts field. user doesn't need to see that.
-  return User.findOneAndUpdate({
-     thoughts: req.params.thoughtId },
+  return User.findOneAndUpdate(
+     { thoughts: req.params.thoughtId },
      { $pull: { thoughts: req.params.thoughtId } },
      { new: true }
       );
@@ -146,16 +145,15 @@ addReaction(req, res) {
     )
       .then((dbThoughtData) => {
         if (!dbThoughtData) {
-          return res
-            .status(404)
-            .json({ message: 'No thought found ' })
+          return res.status(404).json({ 
+            message: 'No thought found ' });
         }
-        res.json(dbThoughtData)
+        res.json(dbThoughtData);
       })
       .catch((err) => {
-        console.log(err)
-        res.status(500).json(err)
-      })
+        console.log(err);
+        res.status(500).json(err);
+      });
   },
 
 // Remove reaction from thought
